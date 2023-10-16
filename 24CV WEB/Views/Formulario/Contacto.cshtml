@@ -1,0 +1,58 @@
+﻿@model _24CV_WEB.Models.InformacionViewModel
+
+<div class="row">
+	@if (TempData["Nombre"] != null && TempData["Apellidos"] != null && TempData["Email"] != null && TempData["FechaNacimiento"] != null && TempData["Turno"] != null && TempData["Comentarios"] != null)
+	{
+		<div class="alert alert-success">
+			<h3 class="text-sm-center">Se ha recibido la informacion del correo @TempData["Email"]</h3> <br>
+			<p class="text-sm-center">@TempData["Nombre"]</p>
+			<p class="text-sm-center">@TempData["Apellidos"]</p>
+			<p class="text-sm-center">@TempData["Email"]</p>
+			<p class="text-sm-center">@TempData["FechaNacimiento"]</p>
+			<p class="text-sm-center">@TempData["Turno"]</p>
+			<p class="text-sm-center">@TempData["Comentarios"]</p>
+		</div>
+	}
+
+
+	<div class="col-12">
+		<h2 class="text-center">Formulario de Contacto</h2>
+		<p class="text-center"></p>
+	</div>
+	<div class="col-8">
+		<form asp-action="EnviarInformacion" asp-controller="Formulario" method="post">
+			<div class="mb-3">
+				<label class="form-label">Nombre</label>
+				<input type="text" asp-for="Nombre" class="form-control" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Apellidos</label>
+				<input type="text" asp-for="Apellidos" class="form-control" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Email</label>
+				<input type="Email" asp-for="Email" class="form-control" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Fecha de Nacimiento</label>
+				<input type="date" asp-for="FechaNacimiento" class="form-control" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Turno</label>
+				<select asp-for="Turno" class="form-select">
+					<option value="Matutino">Matutino</option>
+					<option value="Vespertino">Vespertino</option>
+				</select>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Comentarios</label>
+				<textarea class="form-control" asp-for="Comentarios" rows="4"></textarea>
+			</div>
+			<button class="btn btn-primary">Enviar</button>
+		</form>
+	</div>
+	<div class="col-4">
+		<h3 class="text-center">Enviar informacion al correo capturado.</h3>
+		<p></p>
+	</div>
+</div>
