@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MiFormulario.Models.Curriculum>
+
+<h1 class="text-center">Lista de curriculums</h1>
+
+<div class="row">
+    <div class="col-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Fecha Nacimiendo</th>
+                    <th>CURP</th>
+                    <th>Image Path</th>
+                    <th>Foto</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nombre</td>
+                        <td>@item.ApellidoPaterno</td>
+                        <td>@item.FechaNacimiento</td>
+                        <td>@item.CURP</td>
+                        <td>@item.RutaFoto</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.RutaFoto))
+                            {
+                                <img src="~/Fotos/@item.RutaFoto" width="150" height="150">
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

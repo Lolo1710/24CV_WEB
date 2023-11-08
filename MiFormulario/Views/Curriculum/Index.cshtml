@@ -1,0 +1,53 @@
+﻿@model MiFormulario.Models.Curriculum
+
+<div class="row">
+    <form asp-controller="Curriculum" asp-action="EnviarInformacion" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" asp-for="Nombre" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Apellido paterno</label>
+            <input type="text" class="form-control" asp-for="ApellidoPaterno">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Apellido materno</label>
+            <input type="text" class="form-control" asp-for="ApellidoMaterno">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">CURP</label>
+            <input type="text" class="form-control" asp-for="CURP">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">RFC</label>
+            <input type="text" class="form-control" asp-for="RFC">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fecha de nacimiento</label>
+            <input type="date" class="form-control" asp-for="FechaNacimiento">
+        </div>
+        <div class="mb-3">
+            <input type="hidden" asp-for="RutaFoto" value="FakePath" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Direccion</label>
+            <input type="text" class="form-control" asp-for="Dirección">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="text" class="form-control" asp-for="Email">
+        </div>
+        <select asp-for="PorcentajeIngles" class="form-select form-select-sm" aria-label="Small select example">
+            <option selected>Porcentaje de ingles</option>
+            @for (int i = 1; i <= 100; i++)
+            {
+                <option value="@i">@i %</option>
+            }
+        </select>
+        <div class="mb-3">
+            <label class="form-label">Fotografia</label>
+            <input type="file" class="form-control" asp-for="Foto">
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>

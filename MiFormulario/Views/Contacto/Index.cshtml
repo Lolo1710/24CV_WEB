@@ -1,0 +1,34 @@
+﻿@model MiFormulario.Models.EmailViewModel
+
+<div class="row">
+	@if (TempData["Email"] != null)
+	{
+		<div class="alert alert-success">
+			<h3>Se ha recibido la informacion del correo @TempData["Email"]</h3> <br>
+			<p class="text-sm-center">@TempData["Comentario"]</p>
+		</div>
+	}
+
+
+	<div class="col-12">
+		<h2 class="text-center">Ejemplo</h2>
+		<p class="text-center"></p>
+	</div>
+	<div class="col-8">
+		<form asp-action="EnviarCorreo" asp-controller="Contacto" method="post">
+			<div class="mb-3">
+				<label class="form-label">Email</label>
+				<input type="Email" asp-for="Email" class="form-control" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Comentarios</label>
+				<textarea class="form-control" asp-for="Comentario" rows="4"></textarea>
+			</div>
+			<button class="btn btn-primary">Enviar</button>
+		</form>
+	</div>
+	<div class="col-4">
+		<h3 class="text-center">Enviar informacion al correo capturado.</h3>
+		<p></p>
+	</div>
+</div>

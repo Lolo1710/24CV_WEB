@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Curriculum";
+}
+
+@model IEnumerable<MiFormulario.Models.Curriculum>
+
+<div class="row">
+    @if (TempData["msj-true"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["msj-true"]
+        </div>
+    }
+    else if (TempData["msj-false"] != null)
+    {
+        <div class="alert alert-danger">@TempData["msj-false"]</div>
+    }
+    <h1>Curriculums</h1>
+    <div  class="align-content-end">
+        <a href="@Url.Action("Index", "Curriculum")" class="btn btn-primary">Crear</a>
+    </div>
+    <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido Paterno</th>
+            <th scope="col">Apellido Materno</th>
+            <th scope="col">CURP</th>
+            <th scope="col">RFC</th>
+            <th scope="col">Fecha de Nacimiento</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Email</th>
+            <th scope="col">Ingles</th>
+            <th scope="col">Foto</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Nombre</td>
+                <td>@item.ApellidoPaterno</td>
+                <td>@item.ApellidoMaterno</td>
+                <td>@item.CURP</td>
+                <td>@item.RFC</td>
+                <td>@item.FechaNacimiento.ToString("dd/MM/yyyy")</td>
+                <td>@item.Dirección</td>
+                <td>@item.Email</td>
+                <td>@item.PorcentajeIngles%</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.RutaFoto))
+                    {
+                        <a href="@Url.Action("Lista", "Curriculum", new { id = item.Id })">
+                            <img src="~/Fotos/@item.RutaFoto" width="150" height="150">
+                        </a>
+                    }
+                </td>
+                <td>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="@Url.Action("View", "Curriculum", new { id = item.Id })" class="btn btn-success">Ver</a>
+                        <a href="@Url.Action("ViewEdit", "Curriculum", new { id = item.Id })" class="btn btn-warning">Editar</a>
+                        <a href="@Url.Action("Delete", "Curriculum", new { id = item.Id })" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+    </table>
+</div>

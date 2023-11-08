@@ -1,0 +1,31 @@
+﻿@model MiFormulario.Models.Curriculum
+
+<div class="row">
+    <div class="card" style="width: 100%;">
+        <img src="~/Fotos/@Model.RutaFoto" class="card-img-top" alt="Foto">
+        <div class="card-body text-center">
+            <h5 class="card-title">Mi Curriculum</h5>
+        </div>
+        <ul class="list-group list-group-flush text-center">
+            <li class="list-group-item">@Model.Nombre</li>
+            <li class="list-group-item">@Model.ApellidoPaterno</li>
+            <li class="list-group-item">@Model.ApellidoMaterno</li>
+            <li class="list-group-item">@Model.CURP</li>
+            <li class="list-group-item">@Model.RFC</li>
+            <li class="list-group-item">@Model.FechaNacimiento.ToString("dd/MM/yyyy")</li>
+            <li class="list-group-item">@Model.Dirección</li>
+            <li class="list-group-item">@Model.Email</li>
+            <li class="list-group-item">@Model.PorcentajeIngles% de ingles</li>
+        </ul>
+        <div class="card-body text-center">
+            <a href="@Url.Action("Lista", "Curriculum")" class="btn btn-primary">Volver</a>
+            <button class="btn btn-secondary" onclick="imprimirPagina()">Imprimir</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function imprimirPagina() {
+        window.print();
+    }
+</script>
